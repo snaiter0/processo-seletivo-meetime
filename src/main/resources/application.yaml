@@ -8,8 +8,10 @@ spring:
   #H2 configuration
   h2:
     console:
-      path: /h2
       enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
 
   #Spring jpa do hibernate:
   jpa:
