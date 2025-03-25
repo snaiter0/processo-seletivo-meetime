@@ -32,6 +32,10 @@ spring:
     user:
       name: user
 
+  # application-default:properties
+  profiles:
+    active: ${AMBIENTE:default}
+
 
 
 #Configuracao client hubspot
@@ -39,15 +43,12 @@ hubspot:
   client-id:
   client-secret:
   redirect-uri:
-    callback: https://54.88.79.63:8080/api/v1/hubspot/callback
+    callback: https://5tjoc1upwk.execute-api.us-east-1.amazonaws.com/prod/api/v1/hubspot/callback
   token-url: https://api.hubapi.com/oauth/v1/token
   scope: oauth
   optional-scopes: crm.objects.contacts.read crm.objects.contacts.write
   auth-url: https://app.hubspot.com/oauth/authorize
 
-  # application-default:properties
-  profiles:
-    active: ${AMBIENTE:default}
 
 # Swaggerdoc configurations
 springdoc:
@@ -70,15 +71,3 @@ logging:
 # Info
 # Warn
 # Error
-
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-
----
-
-encripted:
-  secret-key: 1234567890123456
-  algorithm: AES
