@@ -1,0 +1,82 @@
+spring:
+  application:
+    name: hubspot API
+  output:
+    ansi:
+      enabled: always
+
+  #H2 configuration
+  h2:
+    console:
+      path: /h2
+      enabled: true
+
+  #Spring jpa do hibernate:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+  #Spring datasource h2 configuration
+  datasource:
+    url: jdbc:h2:mem:hubspot
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  data:
+    jdbc:
+      dialect: postgresql
+  security:
+    user:
+      name: user
+
+
+
+#Configuracao client hubspot
+hubspot:
+  client-id:
+  client-secret:
+  redirect-uri:
+    callback: http://localhost:8080/api/v1/hubspot/callback
+  token-url: https://api.hubapi.com/oauth/v1/token
+  scope: oauth
+  optional-scopes: crm.objects.contacts.read crm.objects.contacts.write
+  auth-url: https://app.hubspot.com/oauth/authorize
+
+  # application-default:properties
+  profiles:
+    active: ${AMBIENTE:default}
+
+# Swaggerdoc configurations
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+
+
+#logs
+logging:
+  level:
+    root: info
+  file:
+    name: app.log
+# Trace
+# Debug
+# Info
+# Warn
+# Error
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+---
+
+encripted:
+  secret-key: 1234567890123456
+  algorithm: AES
