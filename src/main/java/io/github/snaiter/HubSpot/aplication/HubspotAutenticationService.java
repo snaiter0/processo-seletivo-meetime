@@ -2,7 +2,6 @@ package io.github.snaiter.HubSpot.aplication;
 
 import io.github.snaiter.HubSpot.aplication.usecases.GerarAuthorizationUrlUseCaseImpl;
 import io.github.snaiter.HubSpot.aplication.usecases.GerarTokenUseCaseImpl;
-import io.github.snaiter.HubSpot.domain.model.TokenCache;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.TokenResponse;
 import io.github.snaiter.HubSpot.ports.in.HuspotAutenticationPort;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +23,8 @@ public class HubspotAutenticationService implements HuspotAutenticationPort {
     }
 
     @Override
-    public TokenCache gerarTokenUseCase(String authorizationCode) throws Exception {
-        return gerarTokenUseCase.gerarToken(authorizationCode);
+    public String gerarTokenUseCase(String authorizationCode) throws Exception {
+        return gerarTokenUseCase.gerarToken(authorizationCode).getAccessToken();
     }
 
     @Override
