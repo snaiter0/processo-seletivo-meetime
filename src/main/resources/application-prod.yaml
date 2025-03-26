@@ -1,0 +1,24 @@
+  #Spring jpa do hibernate:
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+#Configuracao client hubspot
+hubspot:
+  redirect-uri:
+    callback: https://ukvrh0c2re.execute-api.us-east-1.amazonaws.com/prod/api/v1/hubspot/auth/callback
+
+#logs
+logging:
+  level:
+    root: info
+  file:
+    name: app.log
+# Trace
+# Debug
+# Info
+# Warn
+# Error

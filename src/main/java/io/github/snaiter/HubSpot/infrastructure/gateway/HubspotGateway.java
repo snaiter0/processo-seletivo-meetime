@@ -1,9 +1,11 @@
 package io.github.snaiter.HubSpot.infrastructure.gateway;
 
-import io.github.snaiter.HubSpot.domain.model.TokenCache;
+import io.github.snaiter.HubSpot.domain.exceptions.HubspotGatewayException;
+import io.github.snaiter.HubSpot.domain.exceptions.TokenCacheNotValidException;
 import io.github.snaiter.HubSpot.infrastructure.gateway.request.ContactRequest;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.ContactResponse;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.TokenResponse;
+import io.github.snaiter.HubSpot.ports.out.gateway.HubspotGatewayPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,13 +13,14 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class HubspotGateway {
+public class HubspotGateway implements HubspotGatewayPort {
 
     private final RestTemplate restTemplate;
 
@@ -43,7 +46,7 @@ public class HubspotGateway {
     private String scope;
 
 
-    // 🔹 Gera a URL de Autorização para o Usuário se autenticar
+    @Override
     public String getAuthUrl() {
         return UriComponentsBuilder.fromHttpUrl(authUrl)
                 .queryParam("client_id", clientId)
@@ -53,6 +56,7 @@ public class HubspotGateway {
                 .toUriString();
     }
 
+    @Override
     public TokenResponse getAccessToken(String authorizationCode) {
         log.info("Gerando novo token de acesso...");
 
@@ -68,7 +72,13 @@ public class HubspotGateway {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
 
-        ResponseEntity<TokenResponse> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, TokenResponse.class);
+        ResponseEntity<TokenResponse> response;
+
+        try{
+            response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, TokenResponse.class);
+        }catch (RestClientException e){
+            throw new TokenCacheNotValidException(e.getMessage(), e);
+        }
 
         if (response.getBody() != null) {
             response.getBody().updateExpirationTime();
@@ -78,6 +88,7 @@ public class HubspotGateway {
         return response.getBody();
     }
 
+    @Override
     public ContactResponse createContact(ContactRequest contactRequest, TokenResponse token) {
         String url = "https://api.hubapi.com/crm/v3/objects/contacts";
 
@@ -86,8 +97,12 @@ public class HubspotGateway {
         headers.setBearerAuth(token.getAccessToken()); // Método que obtém o token válido
 
         HttpEntity<ContactRequest> request = new HttpEntity<>(contactRequest, headers);
-        ResponseEntity<ContactResponse> response = restTemplate.exchange(url, HttpMethod.POST, request, ContactResponse.class);
-
+        ResponseEntity<ContactResponse> response;
+        try{
+            response = restTemplate.exchange(url, HttpMethod.POST, request, ContactResponse.class);
+        }catch (RestClientException e){
+            throw new HubspotGatewayException("Falha na tentativa de criar um novo contato: "+ e.getMessage(), e);
+        }
         return response.getBody();
     }
 

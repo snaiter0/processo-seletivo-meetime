@@ -1,4 +1,4 @@
-package io.github.snaiter.HubSpot.aplication;
+package io.github.snaiter.HubSpot.aplication.utils;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;

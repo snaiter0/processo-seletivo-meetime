@@ -8,7 +8,8 @@ services:
       dockerfile: Dockerfile
     container_name: hubspot_api
     environment:
-      - client-id=8dd59862-09f2-4e1a-9a45-11fb1f2bb72e
-      - client-secret=6484f2f2-dabd-4c95-8e65-9c883b9b5ce3
+      - hubspot.client-id=8dd59862-09f2-4e1a-9a45-11fb1f2bb72e
+      - hubspot.client-secret=6484f2f2-dabd-4c95-8e65-9c883b9b5ce3
+      - AMBIENTE=prod
     ports:
       - "8080:8080"

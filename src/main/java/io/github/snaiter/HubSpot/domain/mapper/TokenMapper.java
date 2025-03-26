@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 public interface TokenMapper {
 
 
-    @Mapping(target = "accessToken", expression = "java(io.github.snaiter.HubSpot.aplication.EncoderUtils.decodePassword(token.getAccessToken()))")
+    @Mapping(target = "accessToken", expression = "java(io.github.snaiter.HubSpot.aplication.utils.EncoderUtils.decodePassword(token.getAccessToken()))")
     TokenResponse toTokenResponse(TokenCache token) throws Exception;
 
-    @Mapping(target = "accessToken", expression = "java(io.github.snaiter.HubSpot.aplication.EncoderUtils.encodePassword(tokenResponse.getAccessToken(), null))")
+    @Mapping(target = "accessToken", expression = "java(io.github.snaiter.HubSpot.aplication.utils.EncoderUtils.encodePassword(tokenResponse.getAccessToken(), null))")
     TokenCache toTokenCache(TokenResponse tokenResponse) throws Exception;
 
 }
