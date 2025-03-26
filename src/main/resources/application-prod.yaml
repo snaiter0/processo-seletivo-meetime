@@ -9,7 +9,7 @@ spring:
 #Configuracao client hubspot
 hubspot:
   redirect-uri:
-    callback: https://5tjoc1upwk.execute-api.us-east-1.amazonaws.com/prod/api/v1/hubspot/callback
+    callback: https://5tjoc1upwk.execute-api.us-east-1.amazonaws.com/prod/api/v1/hubspot/auth/callback
 
 #logs
 logging:
