@@ -6,9 +6,11 @@
 	<p>docker-compose up --build -d</p>
     <h1>Integração com a API do HubSpot</h1>
     <p>Como consumir os endpoints da API para autenticação OAuth e manipulação de contatos do HubSpot.</p>
+	<h3>Hosts disponiveis:</h3>
+	<p><strong>dominio AWS:</strong> <code>http://54.88.79.63:8080</code></p>
+	<p><strong>dominio Local:</strong> <code>http://localhost:8080</code></p>
     <div class="endpoint">
         <div class="endpoint-header">1. Geração da Authorization URL (OAuth)</div>
-        <p><strong>dominio:</strong> <code>http://54.88.79.63:8080</code></p>
         <p><strong>Endpoint:</strong> <code>/api/v1/hubspot/auth/login</code></p>
         <p><strong>Método:</strong> <code>GET</code></p>
         <p><strong>Descrição:</strong> Gera e retorna a URL de autorização para iniciar o fluxo OAuth com o HubSpot.</p>
