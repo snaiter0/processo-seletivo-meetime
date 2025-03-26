@@ -2,13 +2,19 @@ package io.github.snaiter.HubSpot.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Builder
+@RequiredArgsConstructor
 @Entity
 @Table(name = "contato", schema = "contato")
+@AllArgsConstructor
 public class Contato {
 
     @Id
