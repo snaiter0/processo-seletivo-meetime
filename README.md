@@ -131,5 +131,29 @@
         <li><strong>Criação de Contato:</strong> Envie uma requisição POST para <code>/api/v1/hubspot/contato</code> com os dados do contato no corpo da requisição.</li>
         <li><strong>Recebimento de Webhook:</strong> Configure seu sistema para enviar uma requisição POST para <code>/api/v1/hubspot/contato/webhook/contact-creation</code> quando o HubSpot enviar eventos de criação de contatos.</li>
     </ul>
+    <h2>Acessando o Banco de Dados H2</h2>
+    <p>Este tutorial mostra como acessar o banco de dados H2 para consultar os contatos e tokens de autenticação armazenados pela aplicação.</p>
+    <div class="tutorial-step">
+        <div class="tutorial-header">1. Acessando o Console H2</div>
+        <p>O H2 fornece um console web para facilitar o acesso e a consulta aos dados armazenados. Para acessá-lo, siga as etapas abaixo:</p>
+        <ul>
+            <li>Abra seu navegador e acesse a URL: <code>http://54.88.79.63:8080/h2</code></li>
+            <li>Na página do console, preencha os seguintes campos:</li>
+            <ul>
+                <li><strong>JDBC URL:</strong> <code>jdbc:h2:mem:hubspot</code></li>
+                <li><strong>Usuário:</strong> <code>sa</code></li>
+                <li><strong>Senha:</strong> <code>password</code></li>
+            </ul>
+            <li>Clique em "Connect" para acessar o banco de dados.</li>
+        </ul>
+    </div>
+    <div class="tutorial-step">
+        <div class="tutorial-header">2. Consultando Contatos</div>
+        <p>Uma vez conectado ao H2, você pode executar consultas SQL para visualizar os contatos que foram salvos na aplicação.</p>
+    </div>
+    <div class="tutorial-step">
+        <div class="tutorial-header">3. Consultando Tokens de Autenticação</div>
+        <p>Para consultar os tokens de autenticação armazenados, você pode usar o console H2 para realizar as consultas.</p>
+    </div>
 </body>
 </html>
