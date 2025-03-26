@@ -2,7 +2,6 @@ package io.github.snaiter.HubSpot.aplication;
 
 import io.github.snaiter.HubSpot.aplication.usecases.CriarContatoUseCaseImpl;
 import io.github.snaiter.HubSpot.aplication.usecases.ProcessarInsercaoContatoUseCaseImpl;
-import io.github.snaiter.HubSpot.domain.model.Contato;
 import io.github.snaiter.HubSpot.infrastructure.gateway.request.ContactRequest;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.ContactResponse;
 import io.github.snaiter.HubSpot.ports.in.HubspotContatoPort;
@@ -27,7 +26,7 @@ public class HubspotContatoService implements HubspotContatoPort {
 
     @Override
     public ContatoDto processarContato(HubSpotEventNewContactDto eventNewContactDto) {
-        return processarInsercaoContatoUseCase.persistirContato(contato);
+        return processarInsercaoContatoUseCase.persistirContato(eventNewContactDto);
     }
 
 }
