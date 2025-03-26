@@ -142,7 +142,7 @@
             <ul>
                 <li><strong>JDBC URL:</strong> <code>jdbc:h2:mem:hubspot</code></li>
                 <li><strong>Usuário:</strong> <code>sa</code></li>
-                <li><strong>Senha:</strong> <code>password</code></li>
+                <li><strong>Senha:</strong> <code></code></li>
             </ul>
             <li>Clique em "Connect" para acessar o banco de dados.</li>
         </ul>
