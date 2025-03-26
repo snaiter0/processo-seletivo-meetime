@@ -1,9 +1,11 @@
 package io.github.snaiter.HubSpot.adapters.in;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.snaiter.HubSpot.infrastructure.gateway.request.ContactRequest;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.ContactResponse;
 import io.github.snaiter.HubSpot.ports.in.HubspotContatoPort;
 import io.github.snaiter.HubSpot.ports.in.dto.ContatoDto;
+import jakarta.validation.Payload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -28,9 +30,10 @@ public class HubspotContatoController {
     }
 
     @PostMapping(value = "/webhook/contact-creation")
-    public ResponseEntity<ContatoDto> criarContatoWebhook(@RequestBody ContatoDto contato) {
+    public ResponseEntity<ContatoDto> criarContatoWebhook(@RequestBody String payload) {
         log.info("Recebido evento 'contact.creation' do hubspot. " +
-                "Payload: {}", contato);
-        return ResponseEntity.ok(hubspotContatoPort.processarContato(contato));
+                "Payload: {}", payload);
+        return null;
+        //ResponseEntity.ok(hubspotContatoPort.processarContato(payload));
     }
 }
