@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public record ContatoDto(
-                            Long id,
                             Long idHubspot,
                             String nome,
                             String sobrenome,
