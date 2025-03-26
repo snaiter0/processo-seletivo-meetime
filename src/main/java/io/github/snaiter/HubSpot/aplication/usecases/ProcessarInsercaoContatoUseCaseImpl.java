@@ -19,15 +19,7 @@ public class ProcessarInsercaoContatoUseCaseImpl implements ProcessarInsercaoCon
     private final ContatoPortRepository contatoPortRepository;
 
     public ContatoDto persistirContato(HubSpotEventNewContactDto eventNewContactDto) {
-        Contato contato = Contato.builder()
-                .hubspotId(eventNewContactDto.getVid())
-                .nome(eventNewContactDto.getProperties().getNome().getValue())
-                .email(eventNewContactDto.getProperties().getEmail().getValue())
-                .empresa(eventNewContactDto.getProperties().getCompany().getValue())
-                .sobrenome(eventNewContactDto.getProperties().getSobrenome().getValue())
-                .telefone(eventNewContactDto.getProperties().getTelefone().getValue())
-                .build();
 
-        return contatoMapper.toContatoDto(contatoPortRepository.save(contato));
+        return contatoMapper.toContatoDto(contatoPortRepository.save(contatoMapper.toContato(eventNewContactDto)));
     }
 }

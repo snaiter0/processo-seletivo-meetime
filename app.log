@@ -378,3 +378,32 @@ create table contato.contato (limite_credito numeric(38,2), plano_ativo boolean,
 2025-03-25T17:41:14.079-03:00  INFO 27912 --- [hubspot API] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-03-25T17:41:14.081-03:00  INFO 27912 --- [hubspot API] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-03-25T17:41:14.085-03:00  INFO 27912 --- [hubspot API] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-25T23:39:49.424-03:00  INFO 9972 --- [hubspot API] [main] i.g.s.HubSpot.HubSpotApplicationTests    : Starting HubSpotApplicationTests using Java 21.0.6 with PID 9972 (started by snaiter in C:\Users\snaiter\Desktop\Projetos Spring boot\hubspot)
+2025-03-25T23:39:49.425-03:00  INFO 9972 --- [hubspot API] [main] i.g.s.HubSpot.HubSpotApplicationTests    : The following 1 profile is active: "default"
+2025-03-25T23:39:50.230-03:00  INFO 9972 --- [hubspot API] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-25T23:39:50.326-03:00  INFO 9972 --- [hubspot API] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 2 JPA repository interfaces.
+2025-03-25T23:39:50.744-03:00  INFO 9972 --- [hubspot API] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-25T23:39:50.985-03:00  INFO 9972 --- [hubspot API] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:hubspot user=SA
+2025-03-25T23:39:50.987-03:00  INFO 9972 --- [hubspot API] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-25T23:39:51.138-03:00  INFO 9972 --- [hubspot API] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-25T23:39:51.238-03:00  INFO 9972 --- [hubspot API] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-03-25T23:39:51.282-03:00  INFO 9972 --- [hubspot API] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-25T23:39:51.660-03:00  INFO 9972 --- [hubspot API] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-25T23:39:51.761-03:00  INFO 9972 --- [hubspot API] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-25T23:39:52.616-03:00  INFO 9972 --- [hubspot API] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-25T23:39:52.650-03:00  INFO 9972 --- [hubspot API] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-25T23:39:53.189-03:00  INFO 9972 --- [hubspot API] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-25T23:39:54.017-03:00  WARN 9972 --- [hubspot API] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-25T23:39:54.075-03:00  INFO 9972 --- [hubspot API] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-03-25T23:39:54.472-03:00  INFO 9972 --- [hubspot API] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:hubspot'
+2025-03-25T23:39:54.530-03:00  INFO 9972 --- [hubspot API] [main] i.g.s.HubSpot.HubSpotApplicationTests    : Started HubSpotApplicationTests in 5.539 seconds (process running for 9.047)
+2025-03-25T23:39:55.103-03:00  INFO 9972 --- [hubspot API] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-25T23:39:55.105-03:00  INFO 9972 --- [hubspot API] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-25T23:39:55.107-03:00  INFO 9972 --- [hubspot API] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
