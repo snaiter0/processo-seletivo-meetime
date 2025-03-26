@@ -5,6 +5,7 @@ import io.github.snaiter.HubSpot.infrastructure.gateway.request.ContactRequest;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.ContactResponse;
 import io.github.snaiter.HubSpot.ports.in.HubspotContatoPort;
 import io.github.snaiter.HubSpot.ports.in.dto.ContatoDto;
+import io.github.snaiter.HubSpot.ports.in.dto.HubSpotEventNewContactDto;
 import jakarta.validation.Payload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,10 +31,15 @@ public class HubspotContatoController {
     }
 
     @PostMapping(value = "/webhook/contact-creation")
-    public ResponseEntity<ContatoDto> criarContatoWebhook(@RequestBody String payload) {
+    public ResponseEntity<ContatoDto> criarContatoWebhook(@RequestBody HubSpotEventNewContactDto payload) {
         log.info("Recebido evento 'contact.creation' do hubspot. " +
                 "Payload: {}", payload);
-        return null;
-        //ResponseEntity.ok(hubspotContatoPort.processarContato(payload));
+
+        ContatoDto contatoDTO = null;
+        if(payload!=null){
+            contatoDTO = new ObjectMapper().convertValue(payload.getProperties(), ContatoDto.class);
+            return ResponseEntity.ok(hubspotContatoPort.processarContato(contatoDTO));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(contatoDTO);
     }
 }

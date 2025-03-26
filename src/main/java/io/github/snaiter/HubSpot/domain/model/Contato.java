@@ -16,8 +16,17 @@ public class Contato {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "id_hubspot")
+    private Long hubspotId;
+
     @Column(name = "nome")
     private String nome;
+
+    @Column(name = "sobrenome")
+    private String sobrenome;
+
+    @Column(name = "empresa")
+    private String empresa;
 
     @Column(name = "email")
     private String email;
