@@ -33,7 +33,7 @@ public class HubspotContatoController {
     @PostMapping(value = "/webhook/contact-creation")
     public ResponseEntity<ContatoDto> criarContatoWebhook(@RequestBody HubSpotEventNewContactDto payload) {
         log.info("Recebido evento 'contact.creation' do hubspot. " +
-                "Payload: {}", payload);
+                "Payload: {}", payload.toString());
 
         return ResponseEntity.ok(hubspotContatoPort.processarContato(payload));
     }
