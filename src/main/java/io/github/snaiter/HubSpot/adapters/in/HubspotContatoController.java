@@ -1,6 +1,7 @@
 package io.github.snaiter.HubSpot.adapters.in;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.cfg.ContextAttributes;
 import io.github.snaiter.HubSpot.infrastructure.gateway.request.ContactRequest;
 import io.github.snaiter.HubSpot.infrastructure.gateway.response.ContactResponse;
 import io.github.snaiter.HubSpot.ports.in.HubspotContatoPort;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HubspotContatoController {
 
+    private final ObjectMapper objectMapper;
     private final HubspotContatoPort hubspotContatoPort;
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -37,7 +39,7 @@ public class HubspotContatoController {
 
         ContatoDto contatoDTO = null;
         if(payload!=null){
-            contatoDTO = new ObjectMapper().convertValue(payload.getProperties(), ContatoDto.class);
+            contatoDTO = objectMapper.convertValue(payload.getProperties(), ContatoDto.class);
             return ResponseEntity.ok(hubspotContatoPort.processarContato(contatoDTO));
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(contatoDTO);
