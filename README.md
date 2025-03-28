@@ -2,7 +2,7 @@
 	<h1>Como rodar na sua máquina</h1>
 	<p>Basta clonar o repositório através do comando: git clone https://github.com/snaiter0/processo-seletivo-meetime/</p>
 	<p>abrir um console como CMD dentro do diretório e rodar o comando: docker-compose up --build</p>
-	<p>O console da aplicação irá utilizar a janela do CMD, caso deseje manter ela livre, adicione o argumento -d ao finao do comando:</p>
+	<p>O console da aplicação irá utilizar a janela do CMD, caso deseje manter ela livre, adicione o argumento -d ao final do comando:</p>
 	<p>docker-compose up --build -d</p>
     <h1>Integração com a API do HubSpot</h1>
     <p>Como consumir os endpoints da API para autenticação OAuth e manipulação de contatos do HubSpot.</p>
