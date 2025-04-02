@@ -10,6 +10,7 @@ public record ContatoDto(
                             Long idHubspot,
                             String nome,
                             String sobrenome,
+                            String empresa,
                             String email,
                             String telefone,
                             LocalDateTime dataNascimento,
